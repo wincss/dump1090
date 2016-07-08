@@ -7,14 +7,14 @@
 
 // -- Output Settings -------------------------------------
 // Show metric values
-Metric = false; // true or false
+Metric = true; // true or false
 
 // -- Map settings ----------------------------------------
 // The Latitude and Longitude in decimal format
-CONST_CENTERLAT = 45.0;
-CONST_CENTERLON = 9.0;
+CONST_CENTERLAT = 39.85;
+CONST_CENTERLON = 116.9;
 // The google maps zoom level, 0 - 16, lower is further out
-CONST_ZOOMLVL   = 5;
+CONST_ZOOMLVL   = 8;
 
 // -- Marker settings -------------------------------------
 // The default marker color
@@ -25,8 +25,8 @@ StaleColor = "rgb(190, 190, 190)";
 // -- Site Settings ---------------------------------------
 SiteShow    = false; // true or false
 // The Latitude and Longitude in decimal format
-SiteLat     = 45.0;
-SiteLon     = 9.0;
+SiteLat     = 39.5;
+SiteLon     = 116.0;
 
 SiteCircles = true; // true or false (Only shown if SiteShow is true)
 // In nautical miles or km (depending settings value 'Metric')
