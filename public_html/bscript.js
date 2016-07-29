@@ -63,7 +63,7 @@ function initialize() {
         enableMapClick: false,
         mapType: BMAP_NORMAL_MAP,
     });
-    map.centerAndZoom(new BMap.Point(CenterLon, CenterLat), ZoomLvl);  // 初始化地图,设置中心点坐标和地图级别
+    map.centerAndZoom(new BMap.Point(CenterLon, CenterLat), ZoomLvl + 1);  // 初始化地图,设置中心点坐标和地图级别
     map.addControl(new BMap.MapTypeControl({
         type: BMAP_MAPTYPE_CONTROL_HORIZONTAL,
         mapTypes: [BMAP_NORMAL_MAP, BMAP_SATELLITE_MAP, BMAP_HYBRID_MAP]
@@ -77,7 +77,7 @@ function initialize() {
     map.enableKeyboard();
 
     map.addEventListener("zoomend", function() {
-        localStorage['ZoomLvl']  = map.getZoom();
+        localStorage['ZoomLvl']  = map.getZoom() - 1;
     });
     map.addEventListener("moveend", function() {
         localStorage['CenterLat'] = map.getCenter().lat;
