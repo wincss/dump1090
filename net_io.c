@@ -761,7 +761,7 @@ int handleHTTPRequest(struct client *c, char *p) {
         //snprintf(ctype, sizeof ctype, MODES_CONTENT_TYPE_JSON);
     } else {
         struct stat sbuf;
-        int fd = -1;
+        int fd = -1, readsize = 1;
         char *rp, *hrp;
 
         rp = realpath(getFile, NULL);
@@ -772,8 +772,12 @@ int handleHTTPRequest(struct client *c, char *p) {
         if (rp && (!strncmp(hrp, rp, strlen(hrp)))) {
             if (stat(getFile, &sbuf) != -1 && (fd = open(getFile, O_RDONLY)) != -1) {
                 content = (char *) realloc(content, sbuf.st_size);
-                if (read(fd, content, sbuf.st_size) != -1) {
-                    clen = sbuf.st_size;
+                clen = 0;
+                while (readsize > 0) {
+                    readsize = read(fd, content + clen, sbuf.st_size - clen);
+                    clen += readsize;
+                }
+                if (readsize == 0) {
                     statuscode = 200;
                 }
             }

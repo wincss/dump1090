@@ -168,8 +168,6 @@ var planeObject = {
 					SelectedPlane = null;
 				}
 			} else {
-				if (this.reapable == true) {
-				}
 				this.reapable = false;
 			}
 
